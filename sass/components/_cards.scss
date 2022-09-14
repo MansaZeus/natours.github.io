@@ -1,0 +1,206 @@
+.card {
+  perspective: 100rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 54rem;
+  margin-top: 3rem;
+  &_side {
+    background-color: $color-primary-dark;
+    height: 54rem;
+    color: aliceblue;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 2rem;
+    backface-visibility: hidden;
+    border-radius: 0.3rem;
+    overflow: hidden;
+    box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: 0.2);
+    transition: all 1s ease;
+    &--front {
+      background-color: $color-white;
+    }
+
+    &--back {
+      transform: rotateY(180deg);
+      text-align: center;
+      &-1 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-orelight,
+          $color-secondary-oredark
+        );
+      }
+      &-2 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        );
+      }
+      &-3 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-lightblue,
+          $color-secondary-blue
+        );
+      }
+    }
+  }
+
+  &:hover &_side--front {
+    transform: rotateY(-180deg);
+  }
+  &:hover &_side--back {
+    transform: rotateY(0);
+  }
+
+  .card-image {
+    background-size: cover;
+    height: 24rem;
+    background-blend-mode: soft-light;
+    -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 0% 100%);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 0% 100%);
+    &--1 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-orelight,
+          $color-secondary-oredark
+        ),
+        url(../img/nat-5.jpg);
+    }
+    &--2 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        ),
+        url(../img/nat-6.jpg);
+    }
+    &--3 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-lightblue,
+          $color-secondary-blue
+        ),
+        url(../img/nat-7.jpg);
+    }
+  }
+  &-heading {
+    font-size: 3rem;
+    font-weight: 300;
+    text-align: right;
+    text-transform: uppercase;
+    color: $color-white;
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    width: 88%;
+  }
+  &-heading-span {
+    padding: 1rem 1.5rem;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    margin-right: -2rem;
+    &--1 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-secondary-orelight, 0.5),
+        rgba($color-secondary-oredark, 0.5)
+      );
+    }
+    &--2 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.5),
+        rgba($color-primary-dark, 0.5)
+      );
+    }
+    &--3 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-secondary-lightblue, 0.5),
+        rgba($color-secondary-blue, 0.5)
+      );
+    }
+  }
+  &-details {
+    padding: 3rem;
+    text-transform: capitalize;
+    ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto;
+      padding: 2rem;
+
+      li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+        color: $color-black;
+        &:not(:last-child) {
+          border-bottom: 1px solid #eee;
+        }
+      }
+    }
+  }
+
+  &-cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 90%;
+  }
+  &-price-box {
+    text-align: center;
+    margin-bottom: 8rem;
+  }
+  &-price-only {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+  }
+  &-price-value {
+    font-size: 7rem;
+    font-weight: 100;
+  }
+  @include respond(tab-port) {
+    height: auto;
+    background-color: white;
+    box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: 0.2);
+    border-radius: 0.3rem;
+    &_side {
+      height: auto;
+      position: relative;
+      font-size: 2rem;
+      box-shadow: none;
+
+      &--back {
+        transform: rotateY(0);
+        text-align: center;
+        clip-path: polygon(0 7%, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+
+    &:hover &_side--front {
+      transform: rotateY(0);
+    }
+
+    &-cta {
+      position: relative;
+      top: 0%;
+      left: 0%;
+      transform: translate(0);
+      width: 100%;
+      padding: 7rem 1rem;
+    }
+    &-price-box {
+      margin-bottom: 8rem;
+    }
+    &-price-value {
+      font-size: 7rem;
+    }
+  }
+}

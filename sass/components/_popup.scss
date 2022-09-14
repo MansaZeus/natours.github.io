@@ -1,0 +1,90 @@
+.popup {
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color: $color-black, $alpha: 0.9);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  &:target {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &:target &-content {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+
+  &-close {
+    &:link,
+    &:visited {
+      color: $color-dark-grey;
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+      font-size: 3rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s;
+
+      &:hover {
+        color: red;
+      }
+    }
+  }
+
+  &-content {
+    width: 75%;
+    box-shadow: 0 2rem 4rem rgba($color: $color-black, $alpha: 0.3);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 0.5rem;
+    background-color: $color-white;
+    display: table;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.5s 0.4s;
+  }
+
+  &-left {
+    width: 33.333333333%;
+    display: table-cell;
+  }
+
+  &-right {
+    width: 66.666666667%;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 3rem 5rem;
+  }
+
+  &-text {
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
+
+    -moz-column-count: 2;
+    -moz-column-gap: 4rem;
+    -moz-column-rule: 1px $color-dark-grey;
+
+    column-count: 2;
+    column-gap: 4rem;
+    column-rule: 1px $color-dark-grey;
+
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+
+    hyphens: auto;
+  }
+
+  &-img {
+    display: block;
+    width: 100%;
+  }
+}

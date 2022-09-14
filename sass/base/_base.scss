@@ -1,0 +1,37 @@
+*,
+*::after *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  //This defines what 1 rem
+  /*
+  the font size was changed by a simple calculation, this changed the default px from 16px to 10px the calculation is 
+  if the default px == 16px and we want to change it to 10px N.B we changed it to 10px so it will be easy for us to calculate, remember this. now to do that 16px == 100% (normally) then 10px === N. so this brrought us to 1000/16 == 62.5%
+  */
+  font-size: 62.5%;
+
+  @include respond(desk) {
+    font-size: 62.5%;
+  }
+
+  @include respond(tab-land) {
+    font-size: 56.25%; //here we want to change it to 9px  ie 900/16 == 56.25%
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%; //here we want to change it to 8px  ie 800/16 == 56.25%
+  }
+  @include respond(phone) {
+    font-size: 31.25%; //here we want to change it to 5px  ie 500/16 == 31.25%
+  }
+  //Always remember to arrange from the biggest to the smaallest this foolows the rule of last declaration
+  @include respond(big-desk);
+}
+
+body {
+  box-sizing: border-box;
+  padding-top: -4rem;
+}
